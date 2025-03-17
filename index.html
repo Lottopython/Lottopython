@@ -3,92 +3,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gioco del Lotto</title>
+    <title>Sito del Lotto</title>
     <style>
+        /* Stile generale */
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            text-align: center;
-            padding: 50px;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
         }
-        h1 {
-            color: #333;
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+        }
+        nav a {
+            color: white;
+            padding: 15px 20px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            background-color: #555;
         }
         .container {
-            margin: 20px auto;
-            max-width: 600px;
-            background: #fff;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .section {
+            background-color: white;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        .number {
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-            line-height: 50px;
-            margin: 10px;
-            font-size: 20px;
-            font-weight: bold;
-            color: #fff;
-            background-color: #007bff;
-            border-radius: 50%;
+        h2 {
+            color: #333;
         }
-        button {
+        .chat-box {
+            height: 300px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .post-form textarea {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .post-form button {
             padding: 10px 20px;
-            font-size: 16px;
-            color: #fff;
             background-color: #28a745;
+            color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
         }
-        button:hover {
+        .post-form button:hover {
             background-color: #218838;
         }
-        .result {
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
             margin-top: 20px;
-            font-size: 18px;
-            color: #333;
         }
     </style>
 </head>
 <body>
-    <h1>Benvenuto al Gioco del Lotto!</h1>
+    <!-- Header -->
+    <header>
+        <h1>Benvenuto nel Sito del Lotto</h1>
+    </header>
+
+    <!-- Barra di navigazione -->
+    <nav>
+        <a href="#ultima-estrazione">Ultima Estrazione</a>
+        <a href="#simbolotto">Simbolotto</a>
+        <a href="#statistiche">Statistiche</a>
+        <a href="#chat">Chat</a>
+        <a href="#post">Post</a>
+    </nav>
+
+    <!-- Contenuto principale -->
     <div class="container">
-        <p>Clicca il pulsante per generare i tuoi numeri fortunati:</p>
-        <button onclick="generateNumbers()">Estrai Numeri</button>
-        <div id="numbers" class="numbers"></div>
-        <div id="result" class="result"></div>
+        <!-- Area per l'ultima estrazione -->
+        <div id="ultima-estrazione" class="section">
+            <h2>Ultima Estrazione</h2>
+            <p><strong>Ruota di Napoli:</strong> 12, 23, 34, 45, 56</p>
+            <p><strong>Data:</strong> 01/10/2023</p>
+        </div>
+
+        <!-- Area per il Simbolotto -->
+        <div id="simbolotto" class="section">
+            <h2>Simbolotto</h2>
+            <p><strong>Simboli estratti:</strong> 🐶, 🐱, 🐭, 🐰, 🦊</p>
+            <p><strong>Data:</strong> 01/10/2023</p>
+        </div>
+
+        <!-- Area per le statistiche -->
+        <div id="statistiche" class="section">
+            <h2>Statistiche</h2>
+            <p><strong>Frequenze:</strong></p>
+            <ul>
+                <li>Numero 12: 15 volte</li>
+                <li>Numero 23: 12 volte</li>
+                <li>Numero 34: 10 volte</li>
+            </ul>
+            <p><strong>Ritardi:</strong></p>
+            <ul>
+                <li>Numero 56: 20 estrazioni</li>
+                <li>Numero 45: 18 estrazioni</li>
+            </ul>
+        </div>
+
+        <!-- Area per la chat -->
+        <div id="chat" class="section">
+            <h2>Chat</h2>
+            <div class="chat-box" id="chat-box">
+                <p><strong>Utente1:</strong> Buona fortuna a tutti!</p>
+                <p><strong>Utente2:</strong> Grazie!</p>
+            </div>
+            <input type="text" id="chat-input" placeholder="Scrivi un messaggio..." />
+            <button onclick="sendMessage()">Invia</button>
+        </div>
+
+        <!-- Area per i post -->
+        <div id="post" class="section">
+            <h2>Post</h2>
+            <div class="post-form">
+                <textarea placeholder="Scrivi un nuovo post..."></textarea>
+                <button onclick="addPost()">Pubblica</button>
+            </div>
+            <div id="posts">
+                <div class="post">
+                    <p><strong>Admin:</strong> Benvenuti nel nostro sito del lotto!</p>
+                </div>
+            </div>
+        </div>
     </div>
 
+    <!-- Footer -->
+    <footer>
+        &copy; 2023 Sito del Lotto. Tutti i diritti riservati.
+    </footer>
+
     <script>
-        // Funzione per generare numeri casuali
-        function generateNumbers() {
-            const numbers = [];
-            while (numbers.length < 5) { // Generiamo 5 numeri (come nel lotto)
-                const randomNumber = Math.floor(Math.random() * 90) + 1; // Numeri da 1 a 90
-                if (!numbers.includes(randomNumber)) { // Assicuriamoci che non ci siano duplicati
-                    numbers.push(randomNumber);
-                }
+        // Funzione per inviare messaggi nella chat
+        function sendMessage() {
+            const input = document.getElementById('chat-input');
+            const message = input.value.trim();
+            if (message) {
+                const chatBox = document.getElementById('chat-box');
+                chatBox.innerHTML += `<p><strong>Tu:</strong> ${message}</p>`;
+                chatBox.scrollTop = chatBox.scrollHeight; // Scorri verso il basso
+                input.value = ''; // Pulisci l'input
             }
+        }
 
-            // Ordiniamo i numeri in ordine crescente
-            numbers.sort((a, b) => a - b);
-
-            // Mostra i numeri generati
-            const numbersDiv = document.getElementById('numbers');
-            numbersDiv.innerHTML = ''; // Pulisce i numeri precedenti
-            numbers.forEach(number => {
-                const numberElement = document.createElement('div');
-                numberElement.className = 'number';
-                numberElement.textContent = number;
-                numbersDiv.appendChild(numberElement);
-            });
-
-            // Messaggio di risultato
-            const resultDiv = document.getElementById('result');
-            resultDiv.textContent = `I tuoi numeri fortunati sono: ${numbers.join(', ')}`;
+        // Funzione per aggiungere post
+        function addPost() {
+            const textarea = document.querySelector('.post-form textarea');
+            const postContent = textarea.value.trim();
+            if (postContent) {
+                const postsDiv = document.getElementById('posts');
+                const newPost = document.createElement('div');
+                newPost.className = 'post';
+                newPost.innerHTML = `<p><strong>Utente:</strong> ${postContent}</p>`;
+                postsDiv.appendChild(newPost);
+                textarea.value = ''; // Pulisci il campo di testo
+            }
         }
     </script>
 </body>
