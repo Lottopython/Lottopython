@@ -1,11 +1,95 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Il mio sito</title>
+    <title>Gioco del Lotto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            color: #333;
+        }
+        .container {
+            margin: 20px auto;
+            max-width: 600px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            margin: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #007bff;
+            border-radius: 50%;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #28a745;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
 </head>
 <body>
-    <h1>Benvenuto nel mio sito!</h1>
-    <p>Questo è un sito creato con GitHub Pages.</p>
+    <h1>Benvenuto al Gioco del Lotto!</h1>
+    <div class="container">
+        <p>Clicca il pulsante per generare i tuoi numeri fortunati:</p>
+        <button onclick="generateNumbers()">Estrai Numeri</button>
+        <div id="numbers" class="numbers"></div>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        // Funzione per generare numeri casuali
+        function generateNumbers() {
+            const numbers = [];
+            while (numbers.length < 5) { // Generiamo 5 numeri (come nel lotto)
+                const randomNumber = Math.floor(Math.random() * 90) + 1; // Numeri da 1 a 90
+                if (!numbers.includes(randomNumber)) { // Assicuriamoci che non ci siano duplicati
+                    numbers.push(randomNumber);
+                }
+            }
+
+            // Ordiniamo i numeri in ordine crescente
+            numbers.sort((a, b) => a - b);
+
+            // Mostra i numeri generati
+            const numbersDiv = document.getElementById('numbers');
+            numbersDiv.innerHTML = ''; // Pulisce i numeri precedenti
+            numbers.forEach(number => {
+                const numberElement = document.createElement('div');
+                numberElement.className = 'number';
+                numberElement.textContent = number;
+                numbersDiv.appendChild(numberElement);
+            });
+
+            // Messaggio di risultato
+            const resultDiv = document.getElementById('result');
+            resultDiv.textContent = `I tuoi numeri fortunati sono: ${numbers.join(', ')}`;
+        }
+    </script>
 </body>
+</html>
