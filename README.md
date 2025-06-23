@@ -1,16 +1,15 @@
-## Hi there 👋
+# Lotto Italia
+Un sito web dedicato al gioco del Lotto, con generatore di numeri, statistiche e informazioni utili.
 
-<!--
-**Lottopython/Lottopython** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+## Come accedere
+Visita il sito su: [https://username.github.io](https://username.github.io)
 
-Here are some ideas to get you started:
+## Tecnologie usate
+- HTML
+- CSS
+- JavaScript
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+## Come contribuire
+1. Clona il repository.
+2. Modifica i file.
+3. Invia una pull request.
