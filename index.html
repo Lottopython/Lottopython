@@ -2,83 +2,85 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Il Mio Sito Web</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            background: #f5f5f5; 
-            margin: 0; 
-            padding: 0;
-        }
-        header { 
-            background: #0074D9; 
-            color: #fff; 
-            padding: 20px 0; 
-            text-align: center;
-        }
-        nav {
-            background: #001F3F;
-            color: #fff;
-            padding: 10px 0;
-            text-align: center;
-        }
-        nav a {
-            color: #fff;
-            margin: 0 15px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        section {
-            padding: 30px 20px;
-            max-width: 800px;
-            margin: 0 auto;
-            background: #fff;
-        }
-        footer {
-            background: #0074D9;
-            color: #fff;
-            text-align: center;
-            padding: 10px 0;
-            position: fixed;
-            left: 0; right: 0; bottom: 0;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Il Gioco del Lotto</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>
-        <h1>Benvenuto sul mio sito web!</h1>
-    </header>
+    <!-- Navbar -->
     <nav>
-        <a href="#">Home</a>
-        <a href="#">Chi siamo</a>
-        <a href="#">Servizi</a>
-        <a href="#">Contatti</a>
-    </nav>
-    <section>
-        <h2>Chi siamo</h2>
-        <p>
-            Siamo appassionati di tecnologia e creiamo soluzioni innovative per i nostri clienti.
-        </p>
-        <h2>I nostri servizi</h2>
+        <div class="logo">Lotto Italia</div>
         <ul>
-            <li>Sviluppo siti web</li>
-            <li>Consulenza informatica</li>
-            <li>Assistenza tecnica</li>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#regole">Regole</a></li>
+            <li><a href="#numeri">Numeri Fortunati</a></li>
+            <li><a href="#statistiche">Statistiche</a></li>
+            <li><a href="#storia">Storia</a></li>
+            <li><a href="#contatti">Contatti</a></li>
         </ul>
+    </nav>
+
+    <!-- Sezione Home -->
+    <section id="home">
+        <h1>Benvenuto su Lotto Italia!</h1>
+        <p>Scopri il fascino del gioco del Lotto, genera i tuoi numeri fortunati e consulta statistiche aggiornate.</p>
+    </section>
+
+    <!-- Sezione Regole -->
+    <section id="regole">
+        <h2>Regole del Gioco</h2>
+        <p>Il Lotto è un gioco d’azzardo tradizionale italiano. Ecco come funziona:</p>
+        <ul>
+            <li>Scegli da 1 a 10 numeri tra 1 e 90.</li>
+            <li>Seleziona una ruota (es. Roma, Milano).</li>
+            <li>Punta su combinazioni come Ambo, Terno, ecc.</li>
+        </ul>
+    </section>
+
+    <!-- Sezione Numeri Fortunati -->
+    <section id="numeri">
+        <h2>Genera i tuoi Numeri Fortunati</h2>
+        <p>Clicca il pulsante per generare una combinazione casuale!</p>
+        <button onclick="generaNumeri()">Genera Numeri</button>
+        <div id="risultato"></div>
+    </section>
+
+    <!-- Sezione Statistiche -->
+    <section id="statistiche">
+        <h2>Statistiche</h2>
+        <p>Scopri i numeri più estratti e altre curiosità.</p>
+        <ul>
+            <li>Numeri frequenti: 7, 13, 27, 53, 88</li>
+            <li>Ruota più fortunata: Napoli</li>
+        </ul>
+    </section>
+
+    <!-- Sezione Storia -->
+    <section id="storia">
+        <h2>Storia del Lotto</h2>
+        <p>Il Lotto nasce in Italia nel XVI secolo. È uno dei giochi più antichi e amati, con estrazioni settimanali seguite da milioni di persone.</p>
+    </section>
+
+    <!-- Sezione Contatti -->
+    <section id="contatti">
         <h2>Contattaci</h2>
         <form>
-            <label for="nome">Nome:</label><br>
-            <input type="text" id="nome" name="nome"><br>
-            <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email"><br>
-            <label for="messaggio">Messaggio:</label><br>
-            <textarea id="messaggio" name="messaggio"></textarea><br>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="messaggio">Messaggio:</label>
+            <textarea id="messaggio" name="messaggio" required></textarea>
             <button type="submit">Invia</button>
         </form>
     </section>
+
+    <!-- Footer -->
     <footer>
-        &copy; 2025 Il Mio Sito Web. Tutti i diritti riservati.
+        <p>&copy; 2025 Lotto Italia. Creato con GitHub Pages.</p>
+        <p><a href="https://github.com/username/username.github.io">Vedi il codice su GitHub</a></p>
     </footer>
+
+    <script src="js/script.js"></script>
 </body>
 </html>
